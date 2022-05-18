@@ -38,17 +38,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5e0f8846-5f64-438b-9762-a88bd2651549",
-                    "path": "<Touchscreen>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "caac89b4-8653-4358-b39d-293f8e1b2d10",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",

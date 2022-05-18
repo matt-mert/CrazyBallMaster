@@ -33,21 +33,24 @@ public class SideMovement : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
+    private void Update()
+    {
+        Debug.Log(moveVector);
+    }
+
     private void FixedUpdate()
     {
-        if (transform.localPosition.x > roadWidth / 2 && inputVector.x > 0)
-        {
-            inputVector = Vector2.zero;
-        }
-        else if (transform.localPosition.x < -roadWidth / 2 && inputVector.x < 0)
-        {
-            inputVector = Vector2.zero;
-        }
-
-        moveVector = new Vector3(inputVector.normalized.x * sensitivity * Time.fixedDeltaTime, 0, 0);
+        //if (transform.localPosition.x > roadWidth / 2 && inputVector.x > 0)
+        //{
+        //    inputVector = Vector2.zero;
+        //}
+        //else if (transform.localPosition.x < -roadWidth / 2 && inputVector.x < 0)
+        //{
+        //    inputVector = Vector2.zero;
+        //}
 
         if (ManagerInput.isPerformed == false) return;
-
+        moveVector = new Vector3(inputVector.normalized.x * sensitivity * Time.fixedDeltaTime, 0, 0);
         transform.localPosition += moveVector;
         moveVector = Vector3.zero;
         ManagerInput.isPerformed = false;
