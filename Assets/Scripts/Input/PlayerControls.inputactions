@@ -6,13 +6,22 @@
             "id": "dd97a784-3f38-4f25-a442-21b4a2d456c8",
             "actions": [
                 {
-                    "name": "SideMove",
+                    "name": "Move",
                     "type": "Value",
                     "id": "bec28244-d52f-48bd-964f-7c22e4afedfd",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Contact",
+                    "type": "Button",
+                    "id": "bb02888f-681b-4800-92b1-6fc902bf1a0f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -23,7 +32,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SideMove",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -34,7 +43,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SideMove",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "caac89b4-8653-4358-b39d-293f8e1b2d10",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Contact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
