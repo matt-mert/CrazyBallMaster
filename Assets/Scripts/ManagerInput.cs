@@ -14,8 +14,8 @@ public class ManagerInput : MonoBehaviour
 
     private PlayerControls playerControls;
 
-    public static bool isPressing = false;
-    public static bool isPerformed = false;
+    public static bool isPressing;
+    public static bool isPerformed;
 
     private void Awake()
     {
@@ -30,6 +30,8 @@ public class ManagerInput : MonoBehaviour
         }
 
         playerControls = new PlayerControls();
+        isPressing = false;
+        isPerformed = false;
     }
 
     private void OnEnable()
@@ -38,9 +40,9 @@ public class ManagerInput : MonoBehaviour
 
         if (playerControls == null) return;
         playerControls.Enable();
-        playerControls.General.Contact.started += ctx => BeginContact();
+        playerControls.General.Contact.started += ctx => BeginContact(ctx);
         playerControls.General.Move.performed += ctx => DuringContact(ctx);
-        playerControls.General.Contact.canceled += ctx => EndContact();
+        playerControls.General.Contact.canceled += ctx => EndContact(ctx);
     }
 
     private void OnDisable()
@@ -48,39 +50,41 @@ public class ManagerInput : MonoBehaviour
         SceneManager.activeSceneChanged -= OnSceneChange;
 
         if (playerControls == null) return;
-        playerControls.General.Contact.started -= ctx => BeginContact();
-        playerControls.General.Move.performed -= ctx => DuringContact(ctx);
-        playerControls.General.Contact.canceled -= ctx => EndContact();
+        playerControls.General.Contact.started -= BeginContact;
+        playerControls.General.Move.performed -= DuringContact;
+        playerControls.General.Contact.canceled -= EndContact;
         playerControls.Disable();
     }
 
     private void OnSceneChange(Scene current, Scene next)
     {
         playerControls = new PlayerControls();
+        isPressing = false;
+        isPerformed = false;
     }
 
-    private void BeginContact()
+    private void BeginContact(InputAction.CallbackContext ctx)
     {
         if (OnBeginContact == null) return;
+        if (ManagerGame.CurrentState == ManagerGame.GameStates.Menu)
+            ManagerGame.CurrentState = ManagerGame.GameStates.Playing;
+        if (ManagerGame.CurrentState != ManagerGame.GameStates.Playing) return;
         OnBeginContact.Invoke();
         isPressing = true;
-        
-        // if state is menu:
-        // InitializeGame();
-        // OnBeginContract.Invoke();
-        // isPressing = true;
     }
 
     private void DuringContact(InputAction.CallbackContext ctx)
     {
         if (OnDuringContact == null || isPressing == false) return;
+        if (ManagerGame.CurrentState != ManagerGame.GameStates.Playing) return;
         OnDuringContact.Invoke(ctx.ReadValue<Vector2>());
-        isPerformed = true;
+        isPerformed = true; // becomes false again elsewhere.
     }
 
-    private void EndContact()
+    private void EndContact(InputAction.CallbackContext ctx)
     {
         if (OnEndContact == null) return;
+        if (ManagerGame.CurrentState != ManagerGame.GameStates.Playing) return;
         OnEndContact.Invoke();
         isPressing = false;
     }

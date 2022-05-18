@@ -15,6 +15,8 @@ public class ManagerGame : MonoBehaviour
         Completed,
     }
 
+    public static GameStates CurrentState;
+
     public event Action OnMenuState;
     public event Action OnPlayingState;
     public event Action OnDeadState;
@@ -32,6 +34,8 @@ public class ManagerGame : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        CurrentState = GameStates.Menu;
     }
 
     private void OnEnable()
@@ -46,31 +50,36 @@ public class ManagerGame : MonoBehaviour
 
     private void OnSceneChange(Scene current, Scene next)
     {
-        
+        CurrentState = GameStates.Menu;
     }
 
     public void ChangeStateToMenu()
     {
-        OnMenuState?.Invoke();
+        if (OnMenuState == null) return;
+        CurrentState = GameStates.Menu;
     }
     
     public void ChangeStateToPlaying()
     {
-        OnPlayingState?.Invoke();
+        if (OnPlayingState == null) return;
+        CurrentState = GameStates.Playing;
     }
     
     public void ChangeStateToDead()
     {
-        OnDeadState?.Invoke();
+        if (OnDeadState == null) return;
+        CurrentState = GameStates.Dead;
     }
     
     public void ChangeStateToReward()
     {
-        OnRewardState?.Invoke();
+        if (OnRewardState == null) return;
+        CurrentState = GameStates.Reward;
     }
     
     public void ChangeStateToCompleted()
     {
-        OnCompletedState?.Invoke();
+        if (OnCompletedState == null) return;
+        CurrentState = GameStates.Completed;
     }
 }
