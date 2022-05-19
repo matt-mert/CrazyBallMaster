@@ -3,10 +3,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-1)]
-public class ManagerInput : MonoBehaviour
+public class ManagerInput : Singleton<ManagerInput>
 {
-    public static ManagerInput Instance { get; private set; }
-
     public delegate void OnBeginContact();
     public event OnBeginContact onBeginContact;
     public delegate void OnDuringContact(Vector2 ctx);
@@ -16,21 +14,12 @@ public class ManagerInput : MonoBehaviour
 
     private PlayerControls playerControls;
 
-    public static bool isPressing;
-    public static bool isPerformed;
+    public bool isPressing;
+    public bool isPerformed;
 
-    private void Awake()
+    public override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        base.Awake();
         playerControls = new PlayerControls();
         isPressing = false;
         isPerformed = false;

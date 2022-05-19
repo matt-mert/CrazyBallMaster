@@ -3,10 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-1)]
-public class ManagerGame : MonoBehaviour
+public class ManagerGame : Singleton<ManagerGame>
 {
-    public static ManagerGame Instance { get; private set; }
-
     public enum GameStates
     {
         Menu,
@@ -30,18 +28,9 @@ public class ManagerGame : MonoBehaviour
     public delegate void OnCompletedState();
     public event OnCompletedState onCompletedState;
     
-    private void Awake()
+    public override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
+        base.Awake();
         CurrentState = GameStates.Playing;
     }
 

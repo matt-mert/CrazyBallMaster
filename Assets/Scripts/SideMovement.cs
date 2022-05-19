@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SideMovement : MonoBehaviour
 {
-    private ManagerInput managerInput;
     private Vector2 inputVector;
     private Vector3 moveVector;
 
@@ -10,21 +9,16 @@ public class SideMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        managerInput.onBeginContact += BeginMovement;
-        managerInput.onDuringContact += DuringMovement;
-        managerInput.onEndContact += EndMovement;
+        ManagerInput.Instance.onBeginContact += BeginMovement;
+        ManagerInput.Instance.onDuringContact += DuringMovement;
+        ManagerInput.Instance.onEndContact += EndMovement;
     }
 
     private void OnDisable()
     {
-        managerInput.onBeginContact -= BeginMovement;
-        managerInput.onDuringContact -= DuringMovement;
-        managerInput.onEndContact -= EndMovement;
-    }
-
-    private void Awake()
-    {
-        managerInput = FindObjectOfType<ManagerInput>();
+        ManagerInput.Instance.onBeginContact -= BeginMovement;
+        ManagerInput.Instance.onDuringContact -= DuringMovement;
+        ManagerInput.Instance.onEndContact -= EndMovement;
     }
 
     private void Start()
@@ -34,11 +28,11 @@ public class SideMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (ManagerInput.isPerformed == false) return;
+        if (ManagerInput.Instance.isPerformed == false) return;
         moveVector = new Vector3(inputVector.normalized.x * sensitivity * Time.fixedDeltaTime, 0, 0);
         transform.localPosition += moveVector;
         moveVector = Vector3.zero;
-        ManagerInput.isPerformed = false;
+        ManagerInput.Instance.isPerformed = false;
     }
 
     private void BeginMovement()
