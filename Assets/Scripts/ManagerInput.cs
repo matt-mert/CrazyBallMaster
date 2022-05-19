@@ -14,8 +14,8 @@ public class ManagerInput : Singleton<ManagerInput>
 
     private PlayerControls playerControls;
 
-    public bool isPressing;
-    public bool isPerformed;
+    [HideInInspector] public bool isPressing;
+    [HideInInspector] public bool isPerformed;
 
     public override void Awake()
     {
