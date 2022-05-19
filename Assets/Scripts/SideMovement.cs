@@ -40,15 +40,6 @@ public class SideMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (transform.localPosition.x > roadWidth / 2 && inputVector.x > 0)
-        //{
-        //    inputVector = Vector2.zero;
-        //}
-        //else if (transform.localPosition.x < -roadWidth / 2 && inputVector.x < 0)
-        //{
-        //    inputVector = Vector2.zero;
-        //}
-
         if (ManagerInput.isPerformed == false) return;
         moveVector = new Vector3(inputVector.normalized.x * sensitivity * Time.fixedDeltaTime, 0, 0);
         transform.localPosition += moveVector;

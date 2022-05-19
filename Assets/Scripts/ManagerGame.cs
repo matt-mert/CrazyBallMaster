@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[DefaultExecutionOrder(-1)]
 public class ManagerGame : MonoBehaviour
 {
     public static ManagerGame Instance { get; private set; }

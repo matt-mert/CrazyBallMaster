@@ -66,8 +66,6 @@ public class ManagerInput : MonoBehaviour
     private void BeginContact(InputAction.CallbackContext ctx)
     {
         if (OnBeginContact == null) return;
-        //if (ManagerGame.CurrentState == ManagerGame.GameStates.Menu)
-        //    ManagerGame.CurrentState = ManagerGame.GameStates.Playing;
         if (ManagerGame.CurrentState != ManagerGame.GameStates.Playing) return;
         OnBeginContact.Invoke();
         isPressing = true;
