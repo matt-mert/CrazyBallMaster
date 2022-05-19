@@ -24,22 +24,41 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""General"",
-            ""id"": ""dd97a784-3f38-4f25-a442-21b4a2d456c8"",
+            ""name"": ""Gameplay"",
+            ""id"": ""89c10563-6da2-45a5-a6b1-72df926944e7"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
-                    ""id"": ""bec28244-d52f-48bd-964f-7c22e4afedfd"",
+                    ""id"": ""7d1fd362-0583-4b98-8f12-244586a52f76"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
+                }
+            ],
+            ""bindings"": [
                 {
-                    ""name"": ""Contact"",
+                    ""name"": """",
+                    ""id"": ""9a9aebf9-80b3-45b2-80ec-ce500ffb88e7"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""02fda92a-51c4-419e-8625-295e8098796d"",
+            ""actions"": [
+                {
+                    ""name"": ""Press"",
                     ""type"": ""Button"",
-                    ""id"": ""bb02888f-681b-4800-92b1-6fc902bf1a0f"",
+                    ""id"": ""e21fc82f-71f7-4fe3-841b-05348fa54b33"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -49,23 +68,40 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""48d91094-c583-4d88-b070-52bbd6cb687b"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""caac89b4-8653-4358-b39d-293f8e1b2d10"",
+                    ""id"": ""d924b9b5-edb6-4125-a216-2f8edb49b0c3"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Contact"",
+                    ""action"": ""Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Dialogue"",
+            ""id"": ""d1f8b520-d797-4f7f-a0b7-32d125613265"",
+            ""actions"": [
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd62e0dd-3fda-41f1-ac7c-b2469442207b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""90cab4bf-9f0c-407d-a428-3292958681a4"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -74,10 +110,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // General
-        m_General = asset.FindActionMap("General", throwIfNotFound: true);
-        m_General_Move = m_General.FindAction("Move", throwIfNotFound: true);
-        m_General_Contact = m_General.FindAction("Contact", throwIfNotFound: true);
+        // Gameplay
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Press = m_Menu.FindAction("Press", throwIfNotFound: true);
+        // Dialogue
+        m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+        m_Dialogue_Continue = m_Dialogue.FindAction("Continue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -134,49 +175,114 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // General
-    private readonly InputActionMap m_General;
-    private IGeneralActions m_GeneralActionsCallbackInterface;
-    private readonly InputAction m_General_Move;
-    private readonly InputAction m_General_Contact;
-    public struct GeneralActions
+    // Gameplay
+    private readonly InputActionMap m_Gameplay;
+    private IGameplayActions m_GameplayActionsCallbackInterface;
+    private readonly InputAction m_Gameplay_Move;
+    public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
-        public GeneralActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_General_Move;
-        public InputAction @Contact => m_Wrapper.m_General_Contact;
-        public InputActionMap Get() { return m_Wrapper.m_General; }
+        public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GeneralActions set) { return set.Get(); }
-        public void SetCallbacks(IGeneralActions instance)
+        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
+        public void SetCallbacks(IGameplayActions instance)
         {
-            if (m_Wrapper.m_GeneralActionsCallbackInterface != null)
+            if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnMove;
-                @Contact.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnContact;
-                @Contact.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnContact;
-                @Contact.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnContact;
+                @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
             }
-            m_Wrapper.m_GeneralActionsCallbackInterface = instance;
+            m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Contact.started += instance.OnContact;
-                @Contact.performed += instance.OnContact;
-                @Contact.canceled += instance.OnContact;
             }
         }
     }
-    public GeneralActions @General => new GeneralActions(this);
-    public interface IGeneralActions
+    public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Press;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Press => m_Wrapper.m_Menu_Press;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Press.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPress;
+                @Press.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPress;
+                @Press.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPress;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Press.started += instance.OnPress;
+                @Press.performed += instance.OnPress;
+                @Press.canceled += instance.OnPress;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
+
+    // Dialogue
+    private readonly InputActionMap m_Dialogue;
+    private IDialogueActions m_DialogueActionsCallbackInterface;
+    private readonly InputAction m_Dialogue_Continue;
+    public struct DialogueActions
+    {
+        private @PlayerControls m_Wrapper;
+        public DialogueActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Continue => m_Wrapper.m_Dialogue_Continue;
+        public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
+        public void SetCallbacks(IDialogueActions instance)
+        {
+            if (m_Wrapper.m_DialogueActionsCallbackInterface != null)
+            {
+                @Continue.started -= m_Wrapper.m_DialogueActionsCallbackInterface.OnContinue;
+                @Continue.performed -= m_Wrapper.m_DialogueActionsCallbackInterface.OnContinue;
+                @Continue.canceled -= m_Wrapper.m_DialogueActionsCallbackInterface.OnContinue;
+            }
+            m_Wrapper.m_DialogueActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
+            }
+        }
+    }
+    public DialogueActions @Dialogue => new DialogueActions(this);
+    public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnContact(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnPress(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActions
+    {
+        void OnContinue(InputAction.CallbackContext context);
     }
 }

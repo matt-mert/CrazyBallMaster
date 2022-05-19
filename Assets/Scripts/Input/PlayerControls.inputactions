@@ -2,22 +2,41 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "General",
-            "id": "dd97a784-3f38-4f25-a442-21b4a2d456c8",
+            "name": "Gameplay",
+            "id": "89c10563-6da2-45a5-a6b1-72df926944e7",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "bec28244-d52f-48bd-964f-7c22e4afedfd",
+                    "id": "7d1fd362-0583-4b98-8f12-244586a52f76",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
+                }
+            ],
+            "bindings": [
                 {
-                    "name": "Contact",
+                    "name": "",
+                    "id": "9a9aebf9-80b3-45b2-80ec-ce500ffb88e7",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "02fda92a-51c4-419e-8625-295e8098796d",
+            "actions": [
+                {
+                    "name": "Press",
                     "type": "Button",
-                    "id": "bb02888f-681b-4800-92b1-6fc902bf1a0f",
+                    "id": "e21fc82f-71f7-4fe3-841b-05348fa54b33",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -27,23 +46,40 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "48d91094-c583-4d88-b070-52bbd6cb687b",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "caac89b4-8653-4358-b39d-293f8e1b2d10",
+                    "id": "d924b9b5-edb6-4125-a216-2f8edb49b0c3",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Contact",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "d1f8b520-d797-4f7f-a0b7-32d125613265",
+            "actions": [
+                {
+                    "name": "Continue",
+                    "type": "Button",
+                    "id": "dd62e0dd-3fda-41f1-ac7c-b2469442207b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "90cab4bf-9f0c-407d-a428-3292958681a4",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
