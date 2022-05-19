@@ -16,6 +16,8 @@ public class SideMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        if (gameObject.scene.isLoaded) return;
+        if (ManagerInput.Instance == null) return;
         ManagerInput.Instance.onBeginContact -= BeginMovement;
         ManagerInput.Instance.onDuringContact -= DuringMovement;
         ManagerInput.Instance.onEndContact -= EndMovement;

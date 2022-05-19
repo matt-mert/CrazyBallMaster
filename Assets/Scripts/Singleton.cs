@@ -4,10 +4,13 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance = null;
 
+    private static bool isDestroyed;
+
     public static T Instance
     {
         get
         {
+            if (isDestroyed) return null;
             if (instance != null) return instance;
             instance = FindObjectOfType<T>();
             if (instance != null) return instance;
@@ -20,6 +23,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     public virtual void Awake()
     {
+        isDestroyed = false;
+        
         if (instance != null)
         {
             Destroy(gameObject);
@@ -30,5 +35,10 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         if (instance == null) return;
+    }
+
+    private void OnDestroy()
+    {
+        isDestroyed = true;
     }
 }
