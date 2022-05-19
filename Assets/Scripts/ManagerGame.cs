@@ -18,11 +18,17 @@ public class ManagerGame : MonoBehaviour
 
     public static GameStates CurrentState;
 
-    public event Action OnMenuState;
-    public event Action OnPlayingState;
-    public event Action OnDeadState;
-    public event Action OnRewardState;
-    public event Action OnCompletedState;
+    
+    public delegate void OnMenuState();
+    public event OnMenuState onMenuState;
+    public delegate void OnPlayingState();
+    public event OnPlayingState onPlayingState;
+    public delegate void OnDeadState();
+    public event OnDeadState onDeadState;
+    public delegate void OnRewardState();
+    public event OnRewardState onRewardState;
+    public delegate void OnCompletedState();
+    public event OnCompletedState onCompletedState;
     
     private void Awake()
     {
@@ -56,36 +62,36 @@ public class ManagerGame : MonoBehaviour
 
     public void ChangeStateToMenu()
     {
-        if (OnMenuState == null) return;
-        OnMenuState.Invoke();
+        if (onMenuState == null) return;
+        onMenuState.Invoke();
         CurrentState = GameStates.Menu;
     }
     
     public void ChangeStateToPlaying()
     {
-        if (OnPlayingState == null) return;
-        OnPlayingState.Invoke();
+        if (onPlayingState == null) return;
+        onPlayingState.Invoke();
         CurrentState = GameStates.Playing;
     }
     
     public void ChangeStateToDead()
     {
-        if (OnDeadState == null) return;
-        OnDeadState.Invoke();
+        if (onDeadState == null) return;
+        onDeadState.Invoke();
         CurrentState = GameStates.Dead;
     }
     
     public void ChangeStateToReward()
     {
-        if (OnRewardState == null) return;
-        OnRewardState.Invoke();
+        if (onRewardState == null) return;
+        onRewardState.Invoke();
         CurrentState = GameStates.Reward;
     }
     
     public void ChangeStateToCompleted()
     {
-        if (OnCompletedState == null) return;
-        OnCompletedState.Invoke();
+        if (onCompletedState == null) return;
+        onCompletedState.Invoke();
         CurrentState = GameStates.Completed;
     }
 }

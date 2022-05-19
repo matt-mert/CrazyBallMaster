@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class ManagerInput : MonoBehaviour
 {
     public static ManagerInput Instance { get; private set; }
-    
-    public event Action OnBeginContact;
-    public event Action<Vector2> OnDuringContact;
-    public event Action OnEndContact;
+
+    public delegate void OnBeginContact();
+    public event OnBeginContact onBeginContact;
+    public delegate void OnDuringContact(Vector2 ctx);
+    public event OnDuringContact onDuringContact;
+    public delegate void OnEndContact();
+    public event OnEndContact onEndContact;
 
     private PlayerControls playerControls;
 
@@ -40,9 +42,9 @@ public class ManagerInput : MonoBehaviour
 
         if (playerControls == null) return;
         playerControls.Enable();
-        playerControls.General.Contact.started += ctx => BeginContact(ctx);
+        playerControls.General.Contact.started += ctx => BeginContact();
         playerControls.General.Move.performed += ctx => DuringContact(ctx);
-        playerControls.General.Contact.canceled += ctx => EndContact(ctx);
+        playerControls.General.Contact.canceled += ctx => EndContact();
     }
 
     private void OnDisable()
@@ -50,9 +52,9 @@ public class ManagerInput : MonoBehaviour
         SceneManager.activeSceneChanged -= OnSceneChange;
 
         if (playerControls == null) return;
-        playerControls.General.Contact.started -= BeginContact;
-        playerControls.General.Move.performed -= DuringContact;
-        playerControls.General.Contact.canceled -= EndContact;
+        playerControls.General.Contact.started -= ctx => BeginContact();
+        playerControls.General.Move.performed -= ctx => DuringContact(ctx);
+        playerControls.General.Contact.canceled -= ctx => EndContact();
         playerControls.Disable();
     }
 
@@ -63,27 +65,27 @@ public class ManagerInput : MonoBehaviour
         isPerformed = false;
     }
 
-    private void BeginContact(InputAction.CallbackContext ctx)
+    private void BeginContact()
     {
-        if (OnBeginContact == null) return;
+        if (onBeginContact == null) return;
         if (ManagerGame.CurrentState != ManagerGame.GameStates.Playing) return;
-        OnBeginContact.Invoke();
+        onBeginContact.Invoke();
         isPressing = true;
     }
 
     private void DuringContact(InputAction.CallbackContext ctx)
     {
-        if (OnDuringContact == null || isPressing == false) return;
+        if (onDuringContact == null || isPressing == false) return;
         if (ManagerGame.CurrentState != ManagerGame.GameStates.Playing) return;
-        OnDuringContact.Invoke(ctx.ReadValue<Vector2>());
+        onDuringContact.Invoke(ctx.ReadValue<Vector2>());
         isPerformed = true; // becomes false again elsewhere.
     }
 
-    private void EndContact(InputAction.CallbackContext ctx)
+    private void EndContact()
     {
-        if (OnEndContact == null) return;
+        if (onEndContact == null) return;
         if (ManagerGame.CurrentState != ManagerGame.GameStates.Playing) return;
-        OnEndContact.Invoke();
+        onEndContact.Invoke();
         isPressing = false;
     }
 }

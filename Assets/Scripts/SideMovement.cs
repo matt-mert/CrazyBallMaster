@@ -6,21 +6,20 @@ public class SideMovement : MonoBehaviour
     private Vector2 inputVector;
     private Vector3 moveVector;
 
-    [SerializeField] private float roadWidth;
     [SerializeField] private float sensitivity;
 
     private void OnEnable()
     {
-        managerInput.OnBeginContact += BeginMovement;
-        managerInput.OnDuringContact += DuringMovement;
-        managerInput.OnEndContact += EndMovement;
+        managerInput.onBeginContact += BeginMovement;
+        managerInput.onDuringContact += DuringMovement;
+        managerInput.onEndContact += EndMovement;
     }
 
     private void OnDisable()
     {
-        managerInput.OnBeginContact -= BeginMovement;
-        managerInput.OnDuringContact -= DuringMovement;
-        managerInput.OnEndContact -= EndMovement;
+        managerInput.onBeginContact -= BeginMovement;
+        managerInput.onDuringContact -= DuringMovement;
+        managerInput.onEndContact -= EndMovement;
     }
 
     private void Awake()
@@ -31,11 +30,6 @@ public class SideMovement : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-    }
-
-    private void Update()
-    {
-        Debug.Log(moveVector);
     }
 
     private void FixedUpdate()
