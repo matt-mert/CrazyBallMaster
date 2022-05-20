@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38dbfb31-c6f0-45f2-9ec1-ab640279977c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputReaderSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputReaderSO.cs" afterDir="false" />
-    </list>
+    <list default="true" id="38dbfb31-c6f0-45f2-9ec1-ab640279977c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +72,7 @@
       <workItem from="1652903616688" duration="8789000" />
       <workItem from="1652958871227" duration="7106000" />
       <workItem from="1652994743597" duration="8520000" />
-      <workItem from="1653004119249" duration="5527000" />
+      <workItem from="1653004119249" duration="6284000" />
     </task>
     <servers />
   </component>
