@@ -7,7 +7,7 @@ public class InputReaderSO : ScriptableObject, PlayerControls.IGameplayActions, 
 {
     // Gameplay
     
-    public event UnityAction MoveEvent = delegate { };
+    public event UnityAction<Vector2> MoveEvent = delegate { };
     
     // Menu
     
@@ -22,7 +22,7 @@ public class InputReaderSO : ScriptableObject, PlayerControls.IGameplayActions, 
     private void OnEnable()
     {
         if (playerControls == null) return;
-        playerControls = new();
+        playerControls = new PlayerControls();
         playerControls.Gameplay.SetCallbacks(this);
         playerControls.Menu.SetCallbacks(this);
         playerControls.Dialogue.SetCallbacks(this);
@@ -39,7 +39,7 @@ public class InputReaderSO : ScriptableObject, PlayerControls.IGameplayActions, 
     {
         if (ctx.phase == InputActionPhase.Performed)
         {
-            MoveEvent.Invoke();
+            MoveEvent.Invoke(ctx.ReadValue<Vector2>());
         }
     }
 

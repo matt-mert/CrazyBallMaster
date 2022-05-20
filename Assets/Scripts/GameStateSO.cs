@@ -13,10 +13,10 @@ public enum GameState
 
 public class GameStateSO : ScriptableObject
 {
-    public GameState CurrentGameState => currentGameState;
-    
     [SerializeField] [ReadOnly] private GameState currentGameState = default;
     [SerializeField] [ReadOnly] private GameState previousGameState = default;
+    
+    public GameState CurrentGameState => currentGameState;
 
     public void UpdateGameState(GameState newGameState)
     {
