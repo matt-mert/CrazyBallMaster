@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38dbfb31-c6f0-45f2-9ec1-ab640279977c" name="Changes" comment="" />
+    <list default="true" id="38dbfb31-c6f0-45f2-9ec1-ab640279977c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CrazyRunMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CrazyRunMaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Basic1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Basic1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Basic3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Basic3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3DArrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3DArrow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3DArrowMask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3DArrowMask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3DCircle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3DCircle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3DCircleMask4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3DCircleMask4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/FilledCircle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/FilledCircle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Pause.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameEventListener.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameEventListener.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameEventSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameEventSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HealthSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HealthSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputReaderSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputReaderSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,11 +48,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HealthSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerMain.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/JoystickMask.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IKillable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameEventListener.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="29LsGNozztasPJtjIU18DE8SYGC" />
   <component name="ProjectViewState">
@@ -73,6 +100,7 @@
       <workItem from="1652958871227" duration="7106000" />
       <workItem from="1652994743597" duration="8520000" />
       <workItem from="1653004119249" duration="6284000" />
+      <workItem from="1653011585536" duration="672000" />
     </task>
     <servers />
   </component>
