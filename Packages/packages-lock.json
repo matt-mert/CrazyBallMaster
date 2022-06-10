@@ -34,7 +34,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.cinemachine": {
-      "version": "2.8.4",
+      "version": "2.8.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -143,7 +143,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.purchasing": {
-      "version": "4.1.4",
+      "version": "4.1.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
